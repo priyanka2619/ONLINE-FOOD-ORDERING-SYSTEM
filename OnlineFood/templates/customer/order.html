@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block menu %}
+    {% include 'menu.html' %}
+{% endblock %}
+
+{% block content %}
+    {% load cart %}
+    {% load mycustom %}
+    <div class="about-section-box">
+        <div class="container mt-3 pt-3">
+            <h1 class="text-center display-4"><strong>Your Order Details</strong></h1>
+            <div class=" m-4 p-4">
+                <table class="table bg-light" >
+                  <thead>
+                    <tr>
+                      <th scope="col">S.No.</th>
+                      <th scope="col">Photos</th>
+                      <th scope="col">Item</th>
+                      <th scope="col">Price</th>
+                      <th scope="col">Quantity</th>
+                      <th scope="col">DateTime</th>
+                      <th scope="col">Total</th>
+                      <th scope="col">Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                      {% for order in orders %}
+                        <tr>
+                          <th>{{ forloop.counter }}</th>
+                          <th><img style="height: 80px" src="{{ order.menuitem.image.url }}"></th>
+                          <td>{{ order.menuitem.name }}</td>
+                          <td>{{ order.price|currency }}</td>
+                          <td>{{ order.quantity }}</td>
+                          <td>{{ order.datetime }}</td>
+                          <td>{{ order.quantity|multiply:order.price|currency }}</td>
+                          <th>{{ order.status }}</th>
+                        </tr>
+                      {% endfor %}
+                  </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

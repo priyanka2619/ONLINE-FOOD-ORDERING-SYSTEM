@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+
+{% block menu %}
+    {% include 'menu.html' %}
+{% endblock %}
+
+{% block content %}
+    {% load static %}
+	<!-- Start slides -->
+	<div id="slides" class="cover-slides">
+		<ul class="slides-container">
+			<li class="text-center">
+				<img src="{% static 'images/slider-01.jpg' %}" width="300" height="100" alt="">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12">
+							<h1 class="m-b-20"><strong>Welcome To <br> Online Food Ordering System</strong></h1>
+							<p class="m-b-40">We take the teachings of nature.The flavours of your wish.  <br>
+							You can’t stop eating, so go!</p>
+							<p><a class="btn btn-lg btn-circle btn-outline-new-white text-white" href="{% url 'menuitems' %}">Order Now</a></p>
+						</div>
+					</div>
+				</div>
+			</li>
+			<li class="text-center text-white">
+				<img src="{% static 'images/slider-02.jpg' %}" width="500" height="100" alt="">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12">
+							<h1 class="m-b-20 text-white"><strong>Welcome To <br>  Online Food Ordering System</strong></h1>
+							<p class="m-b-40">We take the teachings of nature.The flavours of your wish.  <br>
+							You can’t stop eating, so go!</p>
+							<p><a class="btn btn-lg btn-circle btn-outline-new-white text-white" href="#">Order Now</a></p>
+						</div>
+					</div>
+				</div>
+			</li>
+			<li class="text-center text-white">
+				<img src="{% static 'images/slider-03.jpg' %}" width="500" height="100" alt="">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12">
+							<h1 class="m-b-20"><strong>Welcome To <br>  Online Food Ordering System</strong></h1>
+							<p class="m-b-40">We take the teachings of nature.The flavours of your wish.  <br>
+							You can’t stop eating, so go!</p>
+							<p><a class="btn btn-lg btn-circle btn-outline-new-white text-white" href="#">Order Now</a></p>
+						</div>
+					</div>
+				</div>
+			</li>
+		</ul>
+		<div class="slides-navigation">
+			<a href="#" class="next"><i class="fa fa-angle-right" aria-hidden="true"></i></a>
+			<a href="#" class="prev"><i class="fa fa-angle-left" aria-hidden="true"></i></a>
+		</div>
+	</div>
+	<!-- End slides -->
+	
+	<!-- Start About -->
+	<div class="about-section-box">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6 col-md-6 col-sm-12">
+					<img src="{% static 'images/pancakes-animated.gif' %}" alt="" class="img-fluid">
+				</div>
+				<div class="col-lg-6 col-md-6 col-sm-12 text-center">
+					<div class="inner-column">
+						<h1>Welcome To <span> Online Food Ordering System</span></h1>
+						<p>Food Delivery is a thriving business and there are many opportunities for this Businesses as its Growing. Food delivery Business Caterers the Customers through delivering Food at their Doorstep easily. Starting Food Delivery business is a wonderful way to win heart by delivery food ontime.</p>
+						<p>Let deliciousness twirl in your mouth.Its best opportunity and demands full control of inventory due to the convenience of food.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- End About -->
+
+    {% include 'special gallery.html' %}
+{% endblock %}
+
+
+

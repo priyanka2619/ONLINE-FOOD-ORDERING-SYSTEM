@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block menu %}
+    {% include 'menu.html' %}
+{% endblock %}
+
+{% block content %}
+    <div class="about-section-box">
+        <div class="pt-3" style="background-color: #d39e00">
+            <h1 class="text-white ml-5 mb-3 font-weight-bold">DASHBOARD</h1>
+        </div>
+        <div class="container-fluid">
+           <div class="row">
+               <div class="ml-3 bg-dark" style="border-radius: 50%;width: 170px;height: 170px">
+                    <a href="{% url 'order' %}">
+                        <h1 class="text-center mt-lg-5 pt-3 text-white">My<br>Orders</h1>
+                    </a>
+               </div>
+               <div class="ml-3 bg-dark" style="border-radius: 50%;width: 170px;height: 170px;background-color: #cc3300">
+                    <a href="{% url 'profile' %}">
+                        <h1 class="text-center mt-lg-5 pt-3 text-white">My<br>Profile</h1>
+                    </a>
+               </div>
+               <div class="ml-3 bg-dark" style="border-radius: 50%;width: 170px;height: 170px;background-color: #cc3300">
+                    <a href="{% url 'view_cart' %}">
+                        <h1 class="text-center mt-lg-5 pt-3 text-white">My<br>Cart</h1>
+                    </a>
+               </div>
+               <div class="ml-3 bg-dark" style="border-radius: 50%;width: 170px;height: 170px;background-color: #cc3300">
+                    <a href="">
+                        <h1 class="text-center mt-lg-5 pt-3 text-white">Change Password</h1>
+                    </a>
+               </div>
+               <div class="ml-3 bg-dark" style="border-radius: 50%;width: 170px;height: 170px;background-color: #cc3300">
+                    <a href="{% url 'logout' %}">
+                        <h1 class="text-center mt-lg-5 pt-3 text-white">Logout</h1>
+                    </a>
+               </div>
+           </div>
+        </div>
+    </div>
+{% endblock %}

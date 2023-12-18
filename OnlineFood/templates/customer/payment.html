@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block menu %}
+    {% include 'menu.html' %}
+{% endblock %}
+
+{% block content %}
+    {% load static %}
+    {% load cart %}
+    {% load mycustom %}
+
+    <div class="about-section-box">
+        <div class="pt-3" style="background-color: #d39e00">
+            <h1 class="text-white ml-5 mb-3 font-weight-bold">PAYMENT</h1>
+        </div>
+        <div class="container">
+            <div class="overflow-hidden text-center">
+                <h1 class="ml-3 mt-3 display-6 text-center" ><strong>Total Amount</strong></h1><br>
+                <h3 class="text-center font-weight-bold">{{ items|total_cart_amount:request.session.cart|currency }}</h3><br>
+                <form action="{% url 'success' %}" method="post">
+                    {% csrf_token %}
+                    <script
+                            src="https://checkout.razorpay.com/v1/checkout.js"
+                            data-key="rzp_test_Mx39FX2QV9K5f0"
+                            data-amount="50000"
+                            data-currency="INR"
+                            data-order_id="{{ payment.id }}"
+                            data-buttontext="Pay with Razorpay"
+                            data-name="Pay for Food"
+                            data-description="Test transaction"
+                            data-image="{% static 'images/payment.png' %}"
+                            data-prefill.name="{{ request.session.name }}"
+                            data-prefill.email="{{ request.session.email }}"
+                            data-theme.color="#F37254">
+                    </script>
+                    <input type="hidden" custom="Hidden Element" name="hidden">
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

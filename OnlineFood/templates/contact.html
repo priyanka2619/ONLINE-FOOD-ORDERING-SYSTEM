@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+
+{% block menu %}
+    {% include 'menu.html' %}
+{% endblock %}
+
+{% block content %}
+    {% load static %}
+
+	<!-- Start Contact -->
+	<div class="about-section-box">
+        <div class="pt-3" style="background-color: #d39e00">
+            <h1 class="text-white ml-5 mb-3 font-weight-bold">CONTACT US</h1>
+        </div>
+		<div class="container-fluid">
+			<form id="contactForm">
+				<div class="row">
+                    <div class="col-4">
+                        <br>
+                        <div class="container border">
+                            <div class="overflow-hidden">
+                                <h3>ADDRESS</h3>
+                                <p class="lead">
+                                    4/9/4 Khurdabad, Sahabganj <br>
+                                    Ayodhya
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-8 mb-3">
+                        <h1 class="font-weight-bold">DROP US A MESSAGE</h1><br>
+						<div class="form-group">
+							<input type="text" class="form-control" id="name" name="name" placeholder="Your Name" required data-error="Please enter your name">
+							<div class="help-block with-errors"></div>
+						</div>
+					</div>
+
+                    <div class="col-4">
+                        <div class="container border mb-3">
+                            <div class="overflow-hidden">
+                                <h3>BUSINESS HOURS</h3>
+                                <p class="lead">
+                                   Tuesday-Friday: 9AM-10PM <br>
+                                   Saturday-Sunday: 5PM-10PM <br>
+                                   Monday: Closed
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-8 mt-0">
+						<div class="form-group">
+							<input type="text" placeholder="Your Email" id="email" class="form-control" name="name" required data-error="Please enter your email">
+							<div class="help-block with-errors"></div>
+						</div>
+					</div>
+
+                    <div class="col-4">
+                        <div class="container border">
+                            <div class="overflow-hidden">
+                                <h3>TELEPHONE</h3>
+                                <p class="lead">
+                                    +91 - 111 222 3333 <br>
+                                    +91 - XXX XXX XXXX
+
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+					<div class="col-8">
+						<div class="form-group">
+							<input type="number" placeholder="Phone" id="phone" class="form-control" name="phone" required data-error="Please enter your email">
+							<div class="help-block with-errors"></div>
+						</div>
+					</div>
+                    <div class="col-4">
+                        <div class="overflow-hidden">
+                            <h4>&nbsp;</h4>
+                            <p class="lead">
+                                &nbsp;
+                            </p>
+                        </div>
+                    </div>
+
+					<div class="col-8">
+						<div class="form-group">
+							<textarea class="form-control" id="message" placeholder="Your Message" rows="4" data-error="Write your message" required></textarea>
+							<div class="help-block with-errors"></div>
+						</div>
+						<div class="submit-button text-center">
+							<button class="btn btn-common" id="submit" type="submit">Send Message</button>
+							<div id="msgSubmit" class="h3 text-center hidden"></div>
+							<div class="clearfix"></div>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+
+	<!-- End Contact -->
+
+
+
+{% endblock %}

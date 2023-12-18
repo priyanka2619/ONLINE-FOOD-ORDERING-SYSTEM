@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block menu %}
+    {% include 'menu.html' %}
+{% endblock %}
+
+{% block content %}
+    {% load static %}
+    {% load mycustom %}
+    {% load cart %}
+    <div class="about-section-box">
+        <div class=" pt-3" style="background-color: #d39e00">
+            <h1 class="ml-5 text-white font-weight-bold">Payment Success</h1>
+        </div>
+        <div class="pt-3 ml-lg-3 text-center">
+            <h1 class="font-weight-bold" style="color: #cc3300;font-family: 'Century Gothic'">Thanks for using Razorpay<br>
+                <img src="{% static 'images/check.png' %}" width="70px" height="60px">
+            </h1><br>
+            <h3><strong>Name of Person: </strong> {{request.session.name}}</h3>
+            <h3><strong>Mobile number: </strong> {{ request.session.contact }}</h3>
+            <h3><strong>Amount Paid: </strong> {{ items|total_cart_amount:request.session.cart|currency }}</h3>
+            <h3><strong>Transaction id: </strong> pay_GvG0hcN8H3znVw</h3>
+        </div>
+    </div>
+{% endblock %}

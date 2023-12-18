@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% block menu %}
+    {% include 'menu.html' %}
+{% endblock %}
+
+{% block content %}
+    {% load static %}
+    {% load cart %}
+    {% load mycustom %}
+    <div class="about-section-box">
+        <div class="pt-3" style="background-color: #d39e00">
+            <h1 class="text-white ml-5 mb-3 font-weight-bold">SHOPPING CART</h1>
+        </div>
+        <div class="container">
+{#            <h1 class="text-center display-4"><strong>Your Cart</strong></h1>#}
+            <div class=" m-4 p-4">
+                <table class="table" >
+                  <thead>
+                    <tr class="bg-light" style="font-size: 20px">
+                      <th scope="col">S.No.</th>
+                      <th scope="col">Image</th>
+                      <th scope="col">Item Name</th>
+                      <th scope="col">Price</th>
+                      <th scope="col">Quantity</th>
+                      <th scope="col">Total</th>
+                      <th scope="col">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                      {% for item in items %}
+                        <tr>
+                          <th>{{ forloop.counter }}</th>
+                          <th><img style="height: 80px" src="{{ item.image.url }}"></th>
+                          <td>{{ item.name }}</td>
+                          <td>{{ item.price|currency }}</td>
+                          <td>{{ item|cart_quantity:request.session.cart }}</td>
+                          <td>{{ item|total_amount:request.session.cart|currency }}</td>
+                          <td>
+                              <form action="{% url 'delete_cart_item' %}" method="post">
+                              {% csrf_token %}
+                                  <input hidden type="number" name="customer_id" value="{{ item.id }}">
+                                  <input type="submit" class=" btn-info" value="Delete Item">
+                              </form>
+                          </td>
+                        </tr>
+                      {% endfor %}
+                  </tbody>
+                  <tfoot>
+                     <tr>
+                        <th class="text-center" colspan="5"><strong>TOTAL AMOUNT :</strong></th>
+                        <th>{{ items|total_cart_amount:request.session.cart|currency}}</th>
+                     </tr>
+                  </tfoot>
+                </table>
+
+
+                {# Checkout #}
+                <div class="p-0 ml-3">
+{#                    <a href="#" type="submit" class="border rounded btn btn-success btn-lg float-right col-lg-3">#}
+{#                        Proceed to Checkout#}
+{#                    </a>#}
+                    <a href="{% url 'checkout' %}" type="submit" class="border rounded btn btn-danger btn-lg float-right col-lg-3">
+                        Continue Shopping
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

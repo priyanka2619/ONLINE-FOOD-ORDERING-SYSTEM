@@ -1,0 +1,117 @@
+{% extends 'base.html' %}
+
+{% block menu %}
+    {% include 'menu.html' %}
+{% endblock %}
+
+{% block content %}
+
+        {% load cart %}
+        {% load mycustom %}
+        <div class="about-section-box">
+            <div class="pt-3" style="background-color: #d39e00">
+                <h1 class="text-white ml-5 mb-3 font-weight-bold">OUR MENU ITEMS</h1>
+            </div>
+            <div class="col-lg-12 mt-3">
+                <div class="container-fluid mt-3 pt-3">
+
+                    {# search food #}
+                    <div class="row justify-content-center mt-5">
+                        <div class="col-md-8 col-sm-12 text-center">
+                            <form action="{% url 'menu_items_search' %}" method="get">
+                                <div class="md-form mb-5 active-cyan-2">
+                                   <input type="text" class="form-control" name="q" value="{{ request.GET.q }}" placeholder="Search Our Menu" aria-label="Search">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    {# end search #}
+
+                    <div class="row">
+                        {% for items in menu_items %}
+                            <div class="card mx-auto mb-3 border" style="width: 18rem;">
+                                <img class="card-img-top" src="{{ items.image.url }}"  alt="...">
+                                <div class="card-body">
+                                    <h4 class="card-title"><strong>{{ items.name }}</strong></h4>
+                                  <p class="card-text">{{ items.price }}</p>
+                                </div>
+
+                                <!-- add to cart -->
+                                <div class="card-footer p-0 row no-gutters">
+                                    {% if items|is_in_cart:request.session.cart %}
+                                        <div class="row no-gutters">
+                                            <form action="{% url 'food_items' %}" class="col-2" method="post">
+                                                {% csrf_token %}
+                                                <input hidden type="text" name="product" value="{{ items.id }}">
+                                                <input type="submit" class="btn btn-outline-primary" value="+">
+                                            </form>
+                                        </div>
+
+                                        <div class="text-center col">{{ items|cart_quantity:request.session.cart }}  in cart</div>
+
+                                        <div class="row no-gutters">
+                                            <form action="{% url 'food_items' %}" class="col-2" method="post">
+                                                {% csrf_token %}
+                                                <input hidden type="text" name="product" value="{{ items.id }}">
+                                                <input hidden type="text" name="remove" value="True">
+                                                <input type="submit" class="btn btn-outline-primary" value="-">
+                                            </form>
+                                        </div>
+                                    {% else %}
+                                       <form action="{% url 'food_items' %}" method="post">
+                                           {% csrf_token %}
+                                          <input hidden type="text" name="product" value="{{ items.id }}">
+                                          <input type="submit" class="btn btn-outline-primary btn-lg btn-block cart" value="Add to Cart">
+                                       </form>
+                                    {% endif %}
+                                </div>
+
+                                <!-- end add to cart -->
+
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {# pagination #}
+       <nav aria-label="Page navigation example">
+          <ul class="pagination">
+              {% if posts.has_previous %}
+                <li class="page-item">
+                  <a class="page-link" href="?page={{ posts.previous_page_number }}" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                  </a>
+                </li>
+              {% endif %}
+            <li class="page-item"><a class="page-link" href="#">{{ posts.number }}</a></li>
+            {% if posts.has_next %}
+                <li class="page-item">
+                  <a class="page-link" href="?page={{ posts.next_page_number }}" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                  </a>
+                </li>
+            {% endif %}
+          </ul>
+       </nav>
+
+{% endblock %}
+
+{% block js %}
+{#    <script>#}
+{#        console.log('working');#}
+{#        if(localStorage.getItem('cart') == null)#}
+{#        {#}
+{#            var cart = {};#}
+{#        }#}
+{#        else#}
+{#        {#}
+{#            cart = JSON.parse(localStorage.getItem('cart'));#}
+{#        }#}
+{##}
+{#        $('.cart').click(function () {#}
+{#            console.log('clicked');#}
+{#        });#}
+{#    </script>#}
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block menu %}
+    {% include 'menu.html' %}
+{% endblock %}
+
+{% block content %}
+    {% load static %}
+    {% if request.session.email %}
+    <div class="about-section-box">
+        <div class="pt-3" style="background-color: #d39e00">
+            <h1 class="text-white ml-5 mb-3 font-weight-bold">PROFILE</h1>
+        </div>
+        <div class="container-fluid mt-3 pt-3">
+            <div class="row">
+                <div class="col-6">
+                    <img src="{% static 'images/profile_page.jpg' %}"width="600px">
+                </div>
+                <div class="col-6">
+                    <h1>Welcome Mr/Miss. {{ request.session.name }},</h1>
+                    <h1 class="text-center">Order the Delicious Food from Our<strong> Online Food Ordering System</strong>.</h1><br><br>
+                    <h2 class="font-italic"><strong>Name: </strong> {{ request.session.name }}</h2>
+                    <h2 class="font-italic"><strong>Email id: </strong> {{ request.session.email }}</h2>
+                    <h2 class="font-italic"><strong>Mobile no: </strong>  {{ request.session.contact }}</h2>
+                    <p><a class="btn btn-outline-info btn-circle text-white mt-3" href="{% url 'food_items' %}">Order Now</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+{% endblock %}

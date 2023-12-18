@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+
+{% block menu %}
+    {% include 'menu.html' %}
+{% endblock %}
+
+{% block content %}
+    <div class="about-section-box">
+        <div class=" pt-3" style="background-color: #d39e00">
+            <h1 class="ml-5 text-white font-weight-bold">CUSTOMER REGISTRATION</h1>
+        </div>
+        <div class="container-fluid mt-0 pt-0">
+            <div class="mt-3 pt-3">
+               <div class="col-lg-8 mx-auto border rounded pt-4">
+                   <h1 class="alert alert-success"><strong>Create an Account</strong></h1>
+                   <form action="{% url 'signup' %}" method="post">
+                       {% csrf_token %}
+                        <div class="row">
+                            <!--first name-->
+                           <div class="col-6 mb-3">
+                               <label for=""><h3>First name</h3></label>
+                              <input type="text" name="firstname" placeholder="First name" required id="" class="form-control form-control-sm">
+                           </div>
+
+                            <!--last name-->
+                           <div class="col-6 mb-3">
+                               <label for=""><h3>Last name</h3></label>
+                              <input type="text" name="lastname" placeholder="Last name" required id="" class="form-control form-control-sm">
+                           </div>
+
+                            <!--email-->
+                           <div class="col-6 mb-3">
+                               <label for=""><h3>Email address</h3></label>
+                              <input type="email" name="email" required id="" placeholder="example@gmail.com" class="form-control form-control-sm">
+                           </div>
+
+                            <!--password-->
+                           <div class="col-6 mb-3">
+                             <label for=""><h3>Password</h3></label>
+                             <input type="password" name="password" id="" placeholder="********" class="form-control form-control-sm">
+                           </div>
+
+                            <!--mobile no-->
+                           <div class="col-6 mb-3">
+                               <label for=""><h3>Mobile number</h3></label>
+                              <input type="number" name="mobile_no" required id="" class="form-control form-control-sm">
+                           </div>
+
+                            <!-- Address -->
+                           <div class="col-6 mb-3">
+                               <label for=""><h3>Address</h3></label>
+                              <input type="text" name="address" required id="" class="form-control form-control-sm">
+                           </div>
+
+                            <!-- User Picture -->
+                           <div class="col-6 mb-3">
+                              <label for=""><h3>User Picture</h3></label>
+                              {{ form.image }}
+                           </div>
+                        </div>
+
+
+                       <div class="form-group">
+                        <button type="submit" class="btn btn-dark">Signup</button>
+                       </div>
+                   </form>
+                   {% if error %}
+                        <div class="alert alert-info" role="alert">
+                            <strong>{{ error }}</strong>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                   {% endif %}
+               </div>
+               <div class="col-lg-5 mx-auto rounded">
+                   <p>Already have an account?<a href="{% url 'login' %}"><strong>Log in.</strong></a></p>
+               </div>
+            </div>
+        </div>
+
+    </div>
+
+{% endblock %}

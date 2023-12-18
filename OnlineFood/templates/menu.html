@@ -1,0 +1,71 @@
+
+{% if request.session.email %}
+    {% load static %}
+    <!-- Start header -->
+    <header class="top-navbar">
+		<nav class="navbar navbar-expand-lg navbar-light mb-lg-3">
+			<div class="container">
+				<a class="navbar-brand" href="{% url 'main' %}">
+                    <h1><strong>Online Food Ordering System</strong></h1>
+				</a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbars-rs-food" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
+				  <span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbars-rs-food">
+
+					<ul class="navbar-nav ml-auto">
+                        <li class="nav-item"><a class="nav-link" href="{% url 'main' %}">Home</a></li>
+                        <li class="nav-item "><a class="nav-link" href="{% url 'about' %}">About</a></li>
+                        <li class="nav-item "><a class="nav-link" href="{% url 'menuitems' %}">Menu</a></li>
+{#                        <li class="nav-item"><a class="nav-link" href={% url 'order' %}>My Orders</a></li>#}
+{#                        <li class="nav-item"><a class="nav-link" href={% url 'profile' %}>My Account</a></li>#}
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                My Account
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                              <a class="dropdown-item" href="{% url 'profile' %}">Profile</a>
+                              <a class="dropdown-item" href="{% url 'dashboard' %}">Dashboard</a>
+                            </div>
+                        </li>
+
+                        <li class="nav-item"><a class="nav-link" href={% url 'logout' %}>Logout</a></li>&nbsp;&nbsp;&nbsp;
+                        <li class="nav-item">
+                            <a class="" href="{% url 'view_cart' %}">
+                                <img src="{% static 'images/shopping-cart.png' %}" width="25px">
+                                <span class="font-weight-bold font-italic"><sup>{{ request.session.cart.keys|length }}</sup></span>
+                            </a>
+                        </li>
+					</ul>
+				</div>
+            </div>
+        </nav>
+    </header>
+    <!-- End header -->
+{% else %}
+    <!-- Start header -->
+	<header class="top-navbar">
+		<nav class="navbar navbar-expand-lg navbar-light mb-lg-3">
+			<div class="container">
+				<a class="navbar-brand" href="{% url 'main' %}">
+                    <h1><strong>Online Food Ordering System</strong></h1>
+				</a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbars-rs-food" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
+				  <span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbars-rs-food">
+
+					<ul class="navbar-nav ml-auto">
+						<li class="nav-item"><a class="nav-link" href="{% url 'main' %}">Home</a></li>
+                        <li class="nav-item "><a class="nav-link" href="{% url 'menuitems' %}">Menu</a></li>
+						<li class="nav-item "><a class="nav-link" href="{% url 'about' %}">About</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'signup' %}">Customer Login</a></li>
+						<li class="nav-item "><a class="nav-link" href="{% url 'contact' %}">Contact Us</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</header>
+	<!-- End header -->
+{% endif %}

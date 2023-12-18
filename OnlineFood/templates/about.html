@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block menu %}
+    {% include 'menu.html' %}
+{% endblock %}
+
+{% block content %}
+    {% load static %}
+
+    <!-- Start About -->
+	<div class="about-section-box">
+        <div class="pt-3" style="background-color: #d39e00">
+            <h1 class="text-white ml-5 mb-3 font-weight-bold">ABOUT</h1>
+        </div>
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6 col-md-6 mt-3">
+					<img src="{% static 'images/food.jpg' %}" width="700px" alt="" class="img-fluid">
+				</div>
+				<div class="col-lg-6 col-md-6 text-center mt-3">
+					<div class="inner-column">
+						<h1><span>About Online Food Ordering System</span></h1>
+						<p>Now, Due to Technology Enhancement Food is also Online. Food ordering and delivery is a new online business idea which has evolved with technology.
+
+Food Delivery is a thriving business and there are many opportunities for this Businesses as its Growing. </p>
+						<p>Food delivery Business Caterers the Customers through delivering Food at their Doorstep easily. Starting Food Delivery business is a wonderful way to win heart by delivery food ontime. </p>
+					</div>
+				</div>
+				<div class="col-md-12">
+					<div class="inner-pt">
+						<p>The food at your doorstep. Why starve when you have us. You hunger partner. The one you can count on.</p>
+						<p>An online food ordering system can be defined as software that allows restaurant businesses to accept and manage orders placed over the internet. Online ordering systems generally consists of 2 main components. First is a website or mobile app for hungry customers to view the restaurant's dishes and place an online order. Second is an admin management interface for the restaurants to receive and manage the customer's orders.Foodies will love our food.Just eat and forget everything else.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- End About -->
+
+{% endblock %}
